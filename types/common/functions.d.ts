@@ -20,14 +20,18 @@ type FReduceDistanceMapCoordinateCollections =
   FGenericReducer<IDistanceMapCoordinateCollection>;
 type FDistanceMapToDistanceMapCoordinateCollections = (
   distanceMap: IDistanceMap
-) => IDistanceMapCoordinateCollection[][];
+) => IDistanceMapCoordinateCollection[];
 type FFlattenDistanceMapCoordinateCollections =
   FGenericFlattener<IDistanceMapCoordinateCollection>;
 type FDistanceMapCoordinateCollectionToMoveScoreCollection = (
   distanceMapCoordinateCollections: IDistanceMapCoordinateCollection
 ) => IMoveScoreCollection;
+type FDistanceMapCoordinateToMoveScore = (
+  distanceMapCoordinate: IDistanceMapCoordinate
+) => IMoveScore;
 type FReduceMoveScoreCollection = FGenericReducer<IMoveScoreCollection>;
 type FReduceMoveScore = FGenericReducer<IMoveScore>;
 type FMoveScoreToMove = (moveScore: IMoveScore) => EMove;
+type FReduceDistanceMapCoordinate = FGenericReducer<IDistanceMapCoordinate>;
 
 type FSubmitMove = (move: EMove) => void;

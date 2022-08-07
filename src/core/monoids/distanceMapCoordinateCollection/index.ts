@@ -1,3 +1,4 @@
 import createZero from './createZero';
 import reduce from './reduce';
-export default { createZero, reduce };
+import toMoveScoreCollection from './toMoveScoreCollection';
+export default { createZero, reduce, toMoveScoreCollection };

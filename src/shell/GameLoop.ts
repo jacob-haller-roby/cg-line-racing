@@ -1,9 +1,11 @@
-// As the shell we CAN be a stateful class, so let's do so.
-
 import readTurn from '../core/readTurn';
 import Map from '../core/monoids/map';
 import DistanceMap from '../core/monoids/distanceMap';
 import expandPlayers from '../core/expandPlayers';
+import DistanceMapCoordinateCollection from '../core/monoids/distanceMapCoordinateCollection';
+import MoveScoreCollection from '../core/monoids/moveScoreCollection';
+import MoveScore from '../core/monoids/moveScore';
+import submitMove from './submitMove';
 
 class GameLoop {
   map;
@@ -17,34 +19,14 @@ class GameLoop {
 
     // MONOIDS: IMap, IDistanceMap, IDistanceMapCoordinateCollection, IMoveScore, IMoveScoreCollection
 
-    const flattenDistanceMapCoordinateCollections =
-      null as FFlattenDistanceMapCoordinateCollections;
-    const distanceMapCoordinateCollectionToMoveScoreCollection =
-      null as FDistanceMapCoordinateCollectionToMoveScoreCollection;
-    const reduceMoveScoreCollection = null as FReduceMoveScoreCollection;
-    const reduceMoveScore = null as FReduceMoveScore;
-    const moveScoreToMove = null as FMoveScoreToMove;
-    const submitMove = null as FSubmitMove;
-
-    // Potential moves. Each item represents a move direction or stationary enemy
     expandPlayers(turn, coordinateIsWall)
-      // x/y map with distance & IPotentialPlayer, as 1-item array
       .map(DistanceMap.makeCreateFromPlayer(coordinateIsWall))
-      // merge arrays for same x/y coords, stored as 1-item array
       .reduceA(DistanceMap.reduce)
-      // We no longer care about the x/y coord, just the scores, so flatten it down
-      // [player][xy][playerId]
-      .map(DistanceMap.toDistanceMapCoordinateCollections)
-      .flat()
-      // Convert each scoreable array into an array showing which moves score well
-      .map(distanceMapCoordinateCollectionToMoveScoreCollection)
-      // reduce to create a single IMoveScore for each possible move
-      .reduce(reduceMoveScoreCollection)
-      // reduce to the best of the available moves
-      .reduceA(reduceMoveScore)
-      // extract move
-      .map(moveScoreToMove)
-      // handle the single result
+      .flatMap(DistanceMap.toDistanceMapCoordinateCollections)
+      .map(DistanceMapCoordinateCollection.toMoveScoreCollection)
+      .reduce(MoveScoreCollection.reduce)
+      .reduceA(MoveScore.reduceByScore)
+      .map(MoveScore.toMove)
       .map(submitMove);
   }
 }

@@ -1,5 +1,5 @@
 const toDistanceMapCoordinateCollections: FDistanceMapToDistanceMapCoordinateCollections =
-  (distanceMap) => distanceMap.coordinates;
+  (distanceMap) => distanceMap.coordinates.flat();
 
 export default toDistanceMapCoordinateCollections;
 
