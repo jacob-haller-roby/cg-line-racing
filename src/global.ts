@@ -50,6 +50,11 @@ Array.prototype.log = function (...args: unknown[]) {
   return this;
 };
 
+Array.prototype.msg = function (...args: unknown[]) {
+  console.error(...args);
+  return this;
+};
+
 Array.prototype.reduceP = function (fn) {
   return new Pipeline(this.reduce(fn));
 };

@@ -22,6 +22,7 @@ interface Array<T> {
   ): T[];
   matrix<U>(arr: U[]): [T, U][];
   log(...args: unknown[]): Array<T>;
+  msg(...args: unknown[]): Array<T>;
   reduceP<U>(
     callbackfn: (
       previousValue: U,

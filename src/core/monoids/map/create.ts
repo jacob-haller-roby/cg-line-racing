@@ -1,4 +1,5 @@
 import { BOUNDARIES } from '../../../constants';
+import ECoordinateContent from '../../../enums/ECoordinateContent';
 
 const create: FCreateCoordinateMap = (coordinateIsWall) => {
   const coordinates = Array.range(BOUNDARIES.X.UPPER + 1).map((x) =>

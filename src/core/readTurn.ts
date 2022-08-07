@@ -1,10 +1,11 @@
 const readTurn: FReadTurn = () => {
   const inputs = readline().split(' ');
-  const [playerCount, playerId] = inputs.map(parseInt);
+  const [playerCount, playerId] = inputs.map((i) => parseInt(i));
   const players: IPlayer[] = Array.range(playerCount).map((id) => {
     const playerInputs = readline().split(' ');
-    const [startingX, startingY, currentX, currentY] =
-      playerInputs.map(parseInt);
+    const [startingX, startingY, currentX, currentY] = playerInputs.map((i) =>
+      parseInt(i)
+    );
     return {
       id,
       startingCoordinate: {

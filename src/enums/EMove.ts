@@ -1,4 +1,4 @@
-declare enum EMove {
+enum EMove {
   LEFT = 'LEFT',
   RIGHT = 'RIGHT',
   UP = 'UP',

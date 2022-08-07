@@ -7,8 +7,8 @@ const zero = createZero();
 const createCoordinateIsWall =
   (acc: IMap, cur: IMap): FCoordinateIsWall =>
   (coordinate) =>
-    acc[coordinate.x][coordinate.y] == ECoordinateContent.WALL ||
-    cur[coordinate.x][coordinate.y] == ECoordinateContent.WALL;
+    acc.coordinates[coordinate.x][coordinate.y] == ECoordinateContent.WALL ||
+    cur.coordinates[coordinate.x][coordinate.y] == ECoordinateContent.WALL;
 
 const reduce: FReduceMap = (acc = zero, cur = zero) =>
   create(createCoordinateIsWall(acc, cur));

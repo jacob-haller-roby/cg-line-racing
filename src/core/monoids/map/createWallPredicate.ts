@@ -1,4 +1,5 @@
 import { BOUNDARIES } from '../../../constants';
+import ECoordinateContent from '../../../enums/ECoordinateContent';
 
 const createWallPredicate =
   (map: IMap): FCoordinateIsWall =>

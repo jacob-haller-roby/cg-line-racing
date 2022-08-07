@@ -8,7 +8,7 @@ const reduceByMove: FReduceMoveScore = (
     throw `reduceByMove received move scores of differing types`;
   }
   return {
-    move: acc.move,
+    move: acc.move || cur.move,
     score: acc.score + cur.score,
   };
 };

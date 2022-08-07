@@ -1,3 +1,5 @@
+import EMove from '../enums/EMove';
+
 const createMovePotentials = (
   player: IPlayer,
   coordinateIsWall: FCoordinateIsWall
@@ -7,7 +9,7 @@ const createMovePotentials = (
       id: player.id,
       currentCoordinate: {
         x: player.currentCoordinate.x,
-        y: player.currentCoordinate.y + 1,
+        y: player.currentCoordinate.y - 1,
       },
       move: EMove.UP,
     },
@@ -15,7 +17,7 @@ const createMovePotentials = (
       id: player.id,
       currentCoordinate: {
         x: player.currentCoordinate.x,
-        y: player.currentCoordinate.y - 1,
+        y: player.currentCoordinate.y + 1,
       },
       move: EMove.DOWN,
     },
