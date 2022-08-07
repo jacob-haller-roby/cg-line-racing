@@ -1,0 +1,15 @@
+{
+  "files": [
+    "./src/main.ts",
+    "./types/common/main.d.ts"
+  ],
+  "compilerOptions": {
+    "typeRoots": ["./types"],
+    "target": "ES2019",
+    "module": "ESNext",
+    "moduleResolution": "node"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
